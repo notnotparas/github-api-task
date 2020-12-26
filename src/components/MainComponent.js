@@ -5,13 +5,15 @@ import LocalStorage from "./LocalStorage";
 
 
 // Using a Map here, since we require constant time access and deletion capability
-// window.localStorage.setItem("sD",JSON.stringify(new Map()));
+if(!localStorage.getItem("sD")){
+    localStorage.setItem("sD",JSON.stringify(new Object()));
+}
 // var storedData = JSON.parse(localStorage.getItem("sD") || "{}");
 
 function Main(){
     const [username,setUsername] = useState("");
     const [userData, setUserData] = useState(Object);
-    const [storedData, setStoredData] = useState(JSON.parse(localStorage.getItem("sD") || "{}"));
+    const [storedData, setStoredData] = useState(JSON.parse(localStorage.getItem("sD")));
     // console.log(storedData)
     useEffect(() => {
         getUserData();
